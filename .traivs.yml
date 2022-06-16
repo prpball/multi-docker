@@ -1,0 +1,25 @@
+sudo: required
+language: generic
+services:
+  - docker
+before_install:
+  - docker build -t prpball/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true prpball/react-test npm test
+
+after_success:
+  - docker build -t prpball/multi-client ./client
+  - docker build -t prpball/multi-nginx ./nginx
+  - docker build -t prpball/multi-server ./server
+  - docker build -t prpball/multi-worker ./worker
+
+#log in information for git hub to pull the repo and build
+#utilizing environmental variables which will be set in travis CI
+  - echo "$Docker_Password" | docker login -u "$Docker_ID" --password-stdin
+
+#push images to docker hub
+  - docker push prpball/multi-client
+  - docker push prpball/multi-nginx
+  - docker push prpball/multi-server
+  - docker push prpball/multi-worker
