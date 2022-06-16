@@ -23,3 +23,16 @@ after_success:
   - docker push prpball/multi-nginx
   - docker push prpball/multi-server
   - docker push prpball/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-1 #the region in AWS your elastic bean stalk (EBS) was deployed to
+  app: multi-docker #is the name of the app in EBS (AWS)
+  env: MultiDocker-env #is the name of the environment in EBS (AWS)
+  bucket_name: elasticbeanstalk-us-west-1-XXXXX #requires S3 bucket for storage of image
+  bucket_path: docker-multi
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
