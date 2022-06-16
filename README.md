@@ -8,4 +8,4 @@ It utilizes a React-Native front end, nginx server to serve up the react project
 ## Additional Information
 It's based out of a Udemy course by Stephen Grider called Docker and Kubernestes: The Complete Guide.  THe course takes you through many examples on how to build, test and deploy Docker applications with Kubernestes while also learning how to productionize the workflows.
 
-Course Reference: [https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/](https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/)
+Course Reference: [Docker and Kubernetes: The Complete Guide](https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/)
